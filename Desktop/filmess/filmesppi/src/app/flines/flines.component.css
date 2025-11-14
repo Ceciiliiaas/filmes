@@ -1,0 +1,80 @@
+.filmes-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.busca-container {
+  margin-bottom: 20px;
+}
+
+.campo-busca {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.btn-buscar {
+  background: #eb6c04;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+
+.erro {
+  background: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.carregando {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+.resultado-filme {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.poster {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.poster img {
+  max-width: 200px;
+  border-radius: 4px;
+}
+
+.sem-poster {
+  color: #999;
+  font-style: italic;
+}
+
+.info-filme h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.info-filme p {
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.info-filme strong {
+  color: #555;
+}

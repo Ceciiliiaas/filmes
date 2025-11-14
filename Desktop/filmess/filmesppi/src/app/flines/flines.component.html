@@ -1,0 +1,50 @@
+<div class="filmes-container">
+  <h2> Buscar Filme</h2>
+
+  <div class="busca-container">
+    <input
+      type="text"
+      [(ngModel)]="tituloBusca"
+      (input)="onInputChange()"
+      placeholder="Digite o nome do filme..."
+      class="campo-busca">
+
+    <button (click)="buscarFilme()" class="btn-buscar">
+      {{ carregando ? 'Buscando...' : 'Buscar' }}
+    </button>
+  </div>
+
+
+  <div *ngIf="erro" class="erro">
+    {{ erro }}
+  </div>
+
+
+  <div *ngIf="carregando" class="carregando">
+     Buscando filme...
+  </div>
+
+
+  <div *ngIf="filme && !carregando" class="resultado-filme">
+    <div class="poster">
+      <img
+        [src]="filme.Poster"
+        [alt]="filme.Title"
+        [title]="filme.Title + ' poster'"
+        *ngIf="filme.Poster && filme.Poster !== 'N/A'" />
+      <div class="sem-poster" *ngIf="!filme.Poster || filme.Poster === 'N/A'">
+        🎞️ Sem Poster
+      </div>
+    </div>
+
+    <div class="info-filme">
+      <h3>{{ filme.Title }} ({{ filme.Year }})</h3>
+      <p><strong>Diretor:</strong> {{ filme.Director }}</p>
+      <p><strong>Gênero:</strong> {{ filme.Genre }}</p>
+      <p><strong>Duração:</strong> {{ filme.Runtime }}</p>
+      <p><strong>Atores:</strong> {{ filme.Actors }}</p>
+      <p><strong>Nota IMDB:</strong>  {{ filme.imdbRating }}/10</p>
+      <p><strong>Sinopse:</strong> {{ filme.Plot }}</p>
+    </div>
+  </div>
+</div>
