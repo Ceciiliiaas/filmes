@@ -1,0 +1,69 @@
+<div class="movie-consult-container">
+    <header class="header">
+        <h1>Consulta de Filmes</h1>
+        <p>Busca na base de dados OMDB</p>
+    </header>
+
+    <main class="main-content">
+        <section class="controls-section">
+            <div class="input-group">
+                <input
+                    type="text"
+                    [(ngModel)]="titulo"
+                    placeholder="Digite o título do filme (ex: Star Wars)"
+                    class="search-input"
+                    (keyup.enter)="buscar()"
+                />
+            </div>
+
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" [(ngModel)]="tipoConsulta" value="t" name="consultaType" />
+                    Filme Único
+                </label>
+                <label class="radio-label">
+                    <input type="radio" [(ngModel)]="tipoConsulta" value="s" name="consultaType" />
+                    Lista de Filmes
+                </label>
+            </div>
+
+            <button (click)="buscar()" class="search-button">
+                <i class="fas fa-search"></i> Buscar
+            </button>
+        </section>
+
+        <div *ngIf="erro" class="message-box error">
+            <p>{{ erro }}</p>
+        </div>
+
+        <section *ngIf="resultado" class="results-section">
+
+            <div *ngIf="tipoConsulta === 't'" class="movie-card detailed-view">
+                <img [src]="resultado.Poster" [alt]="'Poster de ' + resultado.Title" class="movie-poster-large" />
+
+                <div class="movie-info">
+                    <h2>{{ resultado.Title }} <span class="movie-year">({{ resultado.Year }})</span></h2>
+
+                    <p><b>Gênero:</b> {{ resultado.Genre }}</p>
+                    <p><b>Diretor:</b> {{ resultado.Director }}</p>
+                    <p><b>Atores:</b> {{ resultado.Actors }}</p>
+
+                    <div class="plot-summary">
+                        <h4>Sinopse:</h4>
+                        <p>{{ resultado.Plot }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="tipoConsulta === 's'" class="movie-list-grid">
+                <div *ngFor="let filme of resultado.Search" class="movie-card list-item">
+                    <img [src]="filme.Poster" [alt]="'Poster de ' + filme.Title" class="movie-poster-small" />
+                    <div class="list-item-info">
+                        <h4>{{ filme.Title }}</h4>
+                        <p class="movie-year">{{ filme.Year }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
